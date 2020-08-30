@@ -9,6 +9,7 @@ var specialArray = special.split("");
 
 function passwordGenerate() {
     var resultArray = [];
+    var resultString = "";
     var length = prompt("Choose a length for your password between 8 and 128 characters.");
     if (length < 8 || length > 128) {
         alert("That number was not between 8 and 128.");
@@ -33,6 +34,12 @@ function passwordGenerate() {
         if (resultArray.length === 0) {
             alert("You must select at lease 1 type of condition to generate a password!");
         }
-
+        else {
+            for (var i = 0; i < length; i++) {
+                var random = Math.floor(Math.random() * resultArray.length);
+                resultString += resultArray[random];
+            }
+        }
     }
+    document.getElementById("password").innerHTML = resultString;
 }
